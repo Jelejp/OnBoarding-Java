@@ -1,7 +1,6 @@
 package day_1;
 
 import java.util.Scanner;
-import java.util.concurrent.SynchronousQueue;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,16 +12,16 @@ public class Main {
         System.out.println(fName);
         System.out.println(age);
         messageWelcome();
-        numMayor();
-        parOInpar();
-        igualDistinto();
-        checkearNumPrimo();
-        int[] numeros = {10, 11, 12, 13, 14, 15};
-        int sumaImpares = sumaImpares(numeros);
-        System.out.println("La suma de los números impares es : " + sumaImpares);
-        int paresYPrimos = paresYPrimos(numeros);
-        System.out.println(paresYPrimos);
-        calculadora();
+        //numMayor();
+        //parOInpar();
+        //numeroIgualODistinto();
+        //checkearNumEsPrimo();
+        //int[] numeros = {10, 11, 12, 13, 14, 15};
+        //int sumaImpares = sumaImpares(numeros);
+       // System.out.println("La suma de los números impares es : " + sumaImpares);
+       //paresYPrimos(numeros);
+      //  System.out.println(paresYPrimos);
+        //calculadora();
         bowling();
 
 
@@ -63,44 +62,38 @@ public class Main {
     }
 
     //5.
-    public static void igualDistinto() {
+    public static void numeroIgualODistinto() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Introduce un número");
-        int numIgualDistinto = scanner.nextInt();
+        int numIngresado1 = scanner.nextInt();
         System.out.println("Introduce otro número");
-        int num2IgualDistinto = scanner.nextInt();
-        if (numIgualDistinto == num2IgualDistinto) {
+        int numIngresado2 = scanner.nextInt();
+        if (numIngresado1 == numIngresado2) {
             System.out.println("Los números son iguales");
         } else {
             System.out.println("Los números son distintos");
         }
     }
 
-    //6.
-    public static void checkearNumPrimo() {
+    //6. Crea un método que reciba un número y devuelva si es primo o no.
+    public static void checkearNumEsPrimo (){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese un número:");
-        int number = scanner.nextInt();
-        boolean esPrimo = true; // Suponemos que el número es primo hasta que se demuestre lo contrario
-
-        if (number <= 1) {
-            esPrimo = false;
-        } else {
-            for (int i = 2; i <= Math.sqrt(number); i++) {
-                if (number % i == 0) {
-                    esPrimo = false;
-                    break; // Si encontramos un divisor, salimos del bucle porque el número no es primo
-                }
+        System.out.println("Ingrese un numero");
+        int numIngresado = scanner.nextInt();
+        if(numIngresado <= 1){
+            System.out.println("El número ingresado no es primo ");
+            return;
+        }
+        for(int numero = 2; numero <= numIngresado / 2 ; numero++){
+            if(numIngresado % numero == 0) {
+                System.out.println("El número ingresado no es primo");
+                return;
             }
         }
-        if (esPrimo) {
-            System.out.println(number + " es un número primo.");
-        } else {
-            System.out.println(number + " no es un número primo.");
-        }
+        System.out.println("El número ingresado es primo");
     }
 
-    //7.
+    //7. Crea un método que reciba un array de números y devuelva la suma de los números impares.
     public static int sumaImpares(int[] array) {
         int suma = 0;
         for (int num : array) {
@@ -112,7 +105,7 @@ public class Main {
     }
 
     //8.
-    public static int paresYPrimos(int[] array) {
+    public static void paresYPrimos(int[] array) {
         int sumaPares = 0;
         int sumaPrimos = 0;
 
@@ -121,18 +114,15 @@ public class Main {
                 sumaPares += num;
             }
 
-            boolean esPrimo = true; // Suponemos que el número es primo hasta que se demuestre lo contrario
+            boolean esPrimo = true;
             if (num <= 1) {
                 esPrimo = false;
-            } else {
-                for (int i = 2; i <= Math.sqrt(num); i++) {
-                    if (num % i == 0) {
+            }
+            for (int numero = 2; numero <= Math.sqrt(num); numero++) {
+                if (num % numero == 0) {
                         esPrimo = false;
-                        break; // Si encontramos un divisor, salimos del bucle porque el número no es primo
-                    }
                 }
             }
-
             if (esPrimo) {
                 sumaPrimos += num;
             }
@@ -141,7 +131,6 @@ public class Main {
         System.out.println("La suma de los numeros pares es : " + sumaPares);
         System.out.println("La suma de los numeros primos es : " + sumaPrimos);
 
-        return sumaPrimos;
     }
 
 
@@ -222,7 +211,7 @@ public class Main {
             System.out.println("2. Capacidad disponible");
             System.out.println("3. Dinero recaudado");
             System.out.println("0. Salir");
-            System.out.print("Choose an option: ");
+            System.out.print("Elija una opcion: ");
             opcion = scanner.nextInt();
 
             switch (opcion) {
@@ -238,7 +227,7 @@ public class Main {
                     String tienePaseVip = scanner.next();
 
                     if (edad < 21) {
-                        System.out.println("Sorry, you must be at least 21 years old to enter the Bowling Alley. Goodbye!");
+                        System.out.println("Lo sentimos, debe tener al menos 21 años para entrar. ¡Adiós!!");
                         return;
                     }
                     System.out.println("Bienvenido, " + nombre + "!");
